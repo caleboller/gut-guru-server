@@ -5,6 +5,9 @@ GutGuruServer::Application.routes.draw do
     namespace :api do
       namespace :v1 do
         post '/sign_up' => 'registrations#create'
+        resources :users do
+          resources :food_entries, :only => [:create]
+        end
       end
     end
   end
