@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121007075340) do
+ActiveRecord::Schema.define(:version => 20121007082729) do
 
   create_table "food_entries", :force => true do |t|
     t.string   "user_id"
@@ -19,6 +19,17 @@ ActiveRecord::Schema.define(:version => 20121007075340) do
     t.integer  "score"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "symptom_measurements", :force => true do |t|
+    t.decimal  "abdominal_pain"
+    t.decimal  "bloating"
+    t.decimal  "constipation"
+    t.decimal  "diarrhea"
+    t.decimal  "stress"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "user_id"
   end
 
   create_table "users", :force => true do |t|

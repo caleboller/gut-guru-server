@@ -7,6 +7,7 @@ GutGuruServer::Application.routes.draw do
         post '/sign_up' => 'registrations#create'
         resources :users do
           resources :food_entries, :only => [:create]
+          resources :symptom_measurements, :only => [:create]
         end
       end
     end
