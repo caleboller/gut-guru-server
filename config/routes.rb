@@ -17,7 +17,9 @@ GutGuruServer::Application.routes.draw do
     end
   end
 
-
+  get "welcome/index0"
+  get "welcome/index1"
+  get "welcome/index2"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
