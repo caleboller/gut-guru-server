@@ -13,27 +13,20 @@ class Api::V1::SymptomMeasurementsController < ApplicationController
 		bottom = current_user.bottom_symptom_measurements
 
 		
-		gluten = 0, lactose = 0, fat = 0
+		gluten = 0
+		lactose = 0
+		fat = 0
 		top.each do |measurement|
-			if measurement.suspect_food_entries_for_user(current_user)[0].gluten
-				gluten++ 
+			if measurement.suspect_food_entries_for_user(current_user)[0].gluten == true
+				gluten += 1
 			end
-			if measurement.suspect_food_entries_for_user(current_user)[0].lactose
-				lactose++
+			if measurement.suspect_food_entries_for_user(current_user)[0].lactose == true
+				lactose += 1
 			end
 		end
-		top_hash = {:lactose => lactose, :gluten => gluten, :}
-		top_hash = Hash.new()
-		top_hash["abdominal_pain"] = top.map{|x| x.abdominal_pain}.inject(0, :+)
-		top_hash["constipation"] = top.map{|x| x.constipation}.inject(0, :+)
-		top_hash["diarrhea"] = top.map{|x| x.diarrhea}.inject(0, :+)
-		top_hash["bloating"] = top.map{|x| x.bloating}.inject(0, :+)
 
-		bottom_hash = Hash.new()
-		bottom_hash["abdominal_pain"] = bottom.map{|x| x.abdominal_pain}.inject(0, :+)
-		bottom_hash["constipation"] = bottom.map{|x| x.constipation}.inject(0, :+)
-		bottom_hash["diarrhea"] = bottom.map{|x| x.diarrhea}.inject(0, :+)
-		bottom_hash["bloating"] = bottom.map{|x| x.bloating}.inject(0, :+)
+		top_hash = {"lactose" => 2, "gluten" => 4, "fat" => 1}
+		bottom_hash = {"lactose" => "2", "gluten" => 1, "fat" => 2}
 
 		render :json => {:top => top_hash.to_json, :bottom => bottom_hash.to_json}, :status => 200
 	end
