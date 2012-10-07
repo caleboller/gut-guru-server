@@ -1,2 +1,114 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+
+
+<script>
+
+$(function () {
+    var chart;
+    $(document).ready(function() {
+        
+        // Radialize the colors
+        Highcharts.getOptions().colors = $.map(Highcharts.getOptions().colors, function(color) {
+            return {
+                radialGradient: { cx: 0.7, cy: 0.5, r: 0.9 },
+                stops: [
+                    [0, color],
+                    [1, Highcharts.Color(color).brighten(-0.3).get('rgb')] // darken
+                ]
+            };
+        });
+        
+        // Build the chart
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'container',
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'IBS analysis'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage}%</b>',
+                percentageDecimals: 1
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000',
+                        formatter: function() {
+                            return '<b>'+ this.point.name +'</b>: '+ Math.round(this.percentage) +' %';
+                        }
+                    }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'IBS food analysis',
+                data: [
+                    
+                    ['Lactose',   45.0],
+                    {
+                        name: 'Highfat',
+                        y: 26.8,
+                        sliced: true,
+                        selected: true
+                    },
+                    ['Gluten',    8.5],
+                    ['FODMAPs',   6.2],
+                    ['Others',    0.7]
+                ]
+            }]
+        });
+    });
+});
+</script>
+
+<div data-role="page" class="type-interior">
+
+	<div data-role="header" data-theme="f">
+		
+
+	</div><!-- /header -->
+
+	<div data-role="content">
+		
+		<div class="content-primary">
+		
+       <img src="/logo.png"  align="center" width="120" height="120" />
+
+
+          
+
+            <form method="get"  name="datarange">
+<center>
+Welcome back, <=firstname>! 
+
+                <select id="number" name="value you need">
+                    <option value="select-value" selected="selected">Select ... </option>  
+                    <option value="atlanta">OVERALL BOWEL SYMPTOM</option>
+                    <option value="atlanta">ABDOMINAL PAIN</option> 
+                    <option value="atlanta">BLOATING</option>
+                    <option value="atlanta">DIARRHEA</option>
+            </select>
+
+                     scores were associated with the following food groups
+            </form>
+
+</center>            
+        <p />
+
+		<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+
+		<!--iframe src="http://173.255.240.147/hospitalseeker/db/patientChart.php"  width="100%" height="430"></iframe 
+
+purple 662D91
+bg     #efe0d1
+text clor   #6c655d
+    -->		
+	
+</div>
