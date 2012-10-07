@@ -11,15 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121007083712) do
+ActiveRecord::Schema.define(:version => 20121007172609) do
 
-  create_table "food_entries", :force => true do |t|
-    t.string   "user_id"
-    t.string   "description"
-    t.integer  "score"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+# Could not dump table "food_entries" because of following StandardError
+#   Unknown type 'bool' for column 'gluten'
 
   create_table "symptom_measurements", :force => true do |t|
     t.float    "abdominal_pain"
