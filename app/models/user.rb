@@ -10,4 +10,23 @@ class User < ActiveRecord::Base
 
   has_many :food_entries
   has_many :symptom_measurements
+
+  def top_symptom_measurements
+  	count = self.symptom_measurements.count
+  	portion = count * 0.25
+  	if portion < 1 
+  		portion = 1
+  	end
+  	measurements = SymptomMeasurement.order("composite_score DESC").limit(portion)
+  end
+
+  def bottom_symptom_measurements
+  	count = self.symptom_measurements.count
+  	portion = count * 0.25
+  	if portion < 1 
+  		portion = 1
+  	end
+  	measurements = SymptomMeasurement.order("composite_score ASC").limit(portion)
+  end
+
 end
