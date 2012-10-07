@@ -25,7 +25,7 @@ class Api::V1::RegistrationsController < ApplicationController
   protected
   def ensure_params_exist
     return unless params[:user].blank?
-    render :json=>{:success=>false, :message=>"missing user_login parameter"}, :status=>422
+    render :json=>{:success=>false, :message=>"missing user parameter"}, :status=>422
   end
 
   def invalid_sign_up_attempt
