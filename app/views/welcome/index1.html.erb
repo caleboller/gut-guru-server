@@ -1,114 +1,94 @@
 
 
-<script>
 
-$(function () {
-    var chart;
-    $(document).ready(function() {
+
+    <div style="background:#662c91; height:6px; width:1080px; margin: 0 auto;"></div>
+    <div class="container">
         
-        // Radialize the colors
-        Highcharts.getOptions().colors = $.map(Highcharts.getOptions().colors, function(color) {
-            return {
-                radialGradient: { cx: 0.7, cy: 0.5, r: 0.9 },
-                stops: [
-                    [0, color],
-                    [1, Highcharts.Color(color).brighten(-0.3).get('rgb')] // darken
-                ]
-            };
-        });
+        <div class="logo"></div>
+        <div class="signin">
+            <b>Welcome Jasmine&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+            <a href="#" class="whiteb">Logout</a>
+        </div>
+        <div class="menubar">
+            <ul id="menu">
+                <li><a class="selected" href="index.html">What is GUT GURU?</a></li>
+                <li><a href="#">How it works?</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Our Team</a></li>
+            </ul>
+            
+            <br style=" clear:both" />
+            
+        </div>
+        <div style="background:#efe0d1 url(images/noise.png); height:15px; width:1080px;"></div>
         
-        // Build the chart
-        chart = new Highcharts.Chart({
-            chart: {
-                renderTo: 'container',
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: false
-            },
-            title: {
-                text: 'IBS analysis'
-            },
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage}%</b>',
-                percentageDecimals: 1
-            },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: true,
-                        color: '#000000',
-                        connectorColor: '#000000',
-                        formatter: function() {
-                            return '<b>'+ this.point.name +'</b>: '+ Math.round(this.percentage) +' %';
-                        }
-                    }
-                }
-            },
-            series: [{
-                type: 'pie',
-                name: 'IBS food analysis',
-                data: [
-                    
-                    ['Lactose',   45.0],
-                    {
-                        name: 'Highfat',
-                        y: 26.8,
-                        sliced: true,
-                        selected: true
-                    },
-                    ['Gluten',    8.5],
-                    ['FODMAPs',   6.2],
-                    ['Others',    0.7]
-                ]
-            }]
-        });
-    });
-});
-</script>
+        
+        <div class="customer_content">
+          <table width="100%" height="256" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td rowspan="2"class="str">Date/Time of Entry</td>
+              <td colspan="5" class="str">Bowel Symptom Scores</td>
+              <td rowspan="2" class="str">Stress Scores</td>
+              <td rowspan="2" class="str">Meals Logged 4 Hours Before</td>
+            </tr>
+            <tr>
+              <td>Abd pain</td>
+              <td>Bloating</td>
+              <td>Constipation</td>
+              <td>Diarrhea</td>
+              <td>Sum</td>
+            </tr>
+            <tr>
+              <td>10/06/12 8:30AM</td>
+              <td>8</td>
+              <td>5</td>
+              <td>5</td>
+              <td>3</td>
+              <td>5</td>
+              <td>6</td>
+              <td>Blueberry Muffin</td>
+            </tr>
+            <tr>
+              <td>10/06/12 8:30AM</td>
+              <td>3</td>
+              <td>6</td>
+              <td>5</td>
+              <td>4</td>
+              <td>1</td>
+              <td>1</td>
+              <td>Orange Juice</td>
+            </tr>
+            <tr>
+              <td>10/06/12 8:30AM</td>
+              <td>8</td>
+              <td>6</td>
+              <td>2</td>
+              <td>4</td>
+              <td>1</td>
+              <td>7</td>
+              <td>Dessert cake</td>
+            </tr>
+            <tr>
+              <td>10/06/12 8:30AM</td>
+              <td>6</td>
+              <td>6</td>
+              <td>5</td>
+              <td>8</td>
+              <td>1</td>
+              <td>1</td>
+              <td>Walnut milk</td>
+            </tr>
+          </table>
 
-<div data-role="page" class="type-interior">
-
-	<div data-role="header" data-theme="f">
-		
-
-	</div><!-- /header -->
-
-	<div data-role="content">
-		
-		<div class="content-primary">
-		
-       <img src="/logo.png"  align="center" width="120" height="120" />
+<a href="/welcome/index2.html" class="button" >Next</a>
 
 
-          
-
-            <form method="get"  name="datarange">
-<center>
-Welcome back, <=firstname>! 
-
-                <select id="number" name="value you need">
-                    <option value="select-value" selected="selected">Select ... </option>  
-                    <option value="atlanta">OVERALL BOWEL SYMPTOM</option>
-                    <option value="atlanta">ABDOMINAL PAIN</option> 
-                    <option value="atlanta">BLOATING</option>
-                    <option value="atlanta">DIARRHEA</option>
-            </select>
-
-                     scores were associated with the following food groups
-            </form>
-
-</center>            
-        <p />
-
-		<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
-
-		<!--iframe src="http://173.255.240.147/hospitalseeker/db/patientChart.php"  width="100%" height="430"></iframe 
+        <!--iframe src="http://173.255.240.147/hospitalseeker/db/patientChart.php"  width="100%" height="430"></iframe 
 
 purple 662D91
 bg     #efe0d1
 text clor   #6c655d
-    -->		
-	
+    -->         
+            
 </div>

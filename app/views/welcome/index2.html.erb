@@ -1,58 +1,197 @@
+<script>
+
+$(function () {
+    var chart;
+    $(document).ready(function() {
+        
+        // Radialize the colors
+        Highcharts.getOptions().colors = $.map(Highcharts.getOptions().colors, function(color) {
+            return {
+                radialGradient: { cx: 0.7, cy: 0.5, r: 0.9 },
+                stops: [
+                    [0, color],
+                    [1, Highcharts.Color(color).brighten(-0.3).get('rgb')] // darken
+                ]
+            };
+        });
+        
+        // Build the chart
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'container',
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'IBS analysis'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage}%</b>',
+                percentageDecimals: 1
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000',
+                        formatter: function() {
+                            return '<b>'+ this.point.name +'</b>: '+ Math.round(this.percentage) +' %';
+                        }
+                    }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'IBS food analysis',
+                data: [
+                    
+                    ['Lactose',   10.0],
+                    {
+                        name: 'Highfat',
+                        y: 40.0,
+                        sliced: true,
+                        selected: true
+                    },
+                    ['Gluten',    20.0],
+                    ['Others',    30.0]
+                ]
+            }]
+        });
 
 
+        // Build the chart
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'container1',
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'IBS analysis'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage}%</b>',
+                percentageDecimals: 1
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000',
+                        formatter: function() {
+                            return '<b>'+ this.point.name +'</b>: '+ Math.round(this.percentage) +' %';
+                        }
+                    }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'IBS food analysis',
+                data: [
+                    
+                    ['Lactose',   14.2],
+                    {
+                        name: 'Highfat',
+                        y: 10.8,
+                        sliced: true,
+                        selected: true
+                    },
+                    ['Gluten',    35.0],
+                    ['Others',    40.0]
+                ]
+            }]
+        });
 
 
-<div data-role="page" class="type-interior">
+    });
+});
+</script>
 
-	<div data-role="header" data-theme="f">
-		
+  <div style="background:#662c91; height:6px; width:1080px; margin: 0 auto;"></div>
+  <div class="container">
+      
+      <div class="logo"></div>
+        <div class="signin">
 
-	</div><!-- /header -->
+            <b>Welcome Jasmine&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+            <a href="#" class="whiteb">Logout</a>
+        </div>
+        <div class="menubar">
+            <ul id="menu">
+                <li><a class="selected" href="index.html">What is GUT GURU?</a></li>
+                <li><a href="#">How it works?</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Our Team</a></li>
+            </ul>
+            
+            <br style=" clear:both" />
+            
+        </div>
+        <div style="background:#efe0d1 url(images/noise.png); height:15px; width:1080px;"></div>
+        
+        
+        <div class="customer_content">
+        
+          <!--em>Welcome back, Jasmine</em -->
+        
+        <div class="options">
+                  Your <span class="green">Lowest</span> 
+                    <select id="styledSelect" >
+                          <option value="a1">OVERALL BOWEL SYMPTOM</option>
+                          <option value="a2">ABDOMINAL PAIN</option>
+                          <option value="a3">BLOATING</option>
+                          <option value="a4">CONSTIPATION</option>
+                          <option value="a5">DIARRHEA</option>
+                    </select>
+                    scores were associated with the following food groups:
+                    
+                </div>
 
-	<div data-role="content">
-		
-		<div class="content-primary">
-		
-       <img src="/logo.png"  align="center" width="120" height="120" />
+                        <div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
 
+                
+                <div class="options">
+                  Your <span class="red">highest</span> 
+                    <select id="styledSelect" >
+                          <option value="a1">OVERALL BOWEL SYMPTOM</option>
+                          <option value="a2">ABDOMINAL PAIN</option>
+                          <option value="a3">BLOATING</option>
+                          <option value="a4">CONSTIPATION</option>
+                          <option value="a5">DIARRHEA</option>
+                    </select>
+                    scores were associated with the following food groups:
+                    
+                </div>
 
-          
+                        <div id="container1" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
 
-            <form method="get"  name="datarange">
-<p/>
-Welcome Jesmine! <p/> 
-
-<center>
-Your <font color="red">HIGHEST </font>
-                <select id="number" name="value you need">
-                    <option value="select-value" >Select ... </option>  
-                    <option value="atlanta" selected="selected">OVERALL BOWEL SYMPTOM</option>
-                    <option value="atlanta">ABDOMINAL PAIN</option> 
-                    <option value="atlanta">BLOATING</option>
-                    <option value="atlanta">DIARRHEA</option>
-            </select>
-
-                     scores were associated with the following food meals
-            </form>
-
-</center>  
-
-
-
-
-<ol style="margin-left:220px;">
-  <li>Peaches, Tillamook non-fat yogurt</li>
-  <li>Milkshake</li>
-  <li>Lucerne Whipped Cream, Haagen Daz chocolate ice-cream</li>
-    <li>Diet Coke, cottage cheese, peaches</li>
-    <li>Watermelon</li>
-</ol>
-
-
-          
-        <p />
-
-		<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+                
+                <a href="#" class="button">Food Recommandations</a>
+                <div class="details">
+                    <ol>
+                        <li>Peaches, Tillamook non-fat yogurt</li>
+                        <li>Milkshake</li>
+                        <li>Lucerne Whipped Crean, Haagen Daz chocolate ice cream</li>
+                        <li>Diet Coke, cottage cheese, peaches</li>
+                        <li>Watermelon</li>
+                    </ol>
+                </div>  
+                
+                
+        </div>
+        
+        
+        </div>
+        
+  </div>
 
 		<!--iframe src="http://173.255.240.147/hospitalseeker/db/patientChart.php"  width="100%" height="430"></iframe 
 
@@ -61,4 +200,3 @@ bg     #efe0d1
 text clor   #6c655d
     -->		
 	
-</div>
