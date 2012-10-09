@@ -22,17 +22,26 @@
         </div>
         <div style="background:#f9f8f8 url(/images/noise.png); height:15px; width:1080px;"></div>
         
-        
+        <script>
+        function changeURL(idx){
+            url = "/welcome/index1";
+            if (idx > 0){
+                url = "/welcome/index3";
+            }
+            document.getElementById("goNext").href = url;
+            //window.location.href(url);
+        }
+
+        </script>
         <div class="maincontent">
                 <div class="">
-                    <select id="styledSelect" >
-                          <option value="yourMom">I am a patient</option>
-                          <option value="myMom">I am a physician</option>
-                          <option value="myMom">I am a researcher</option>
+                    <select id="usertype2" name="usertype2">
+                          <option value="patient">I am a patient</option>
+                          <option value="physician" selected>I am a physician</option>
+                          <option value="researcher">I am a researcher</option>
                     </select>
-                    <!--a href="/welcome/index1.html" class="button" >Let's get started</a-->
 
-                    <%= link_to "Let's get started", welcome_index1_path, :class => "button" %>
+                    <a href="#" class="button" onclick="changeURL(usertype2.selectedIndex);" id="goNext">Let's get started</a>
 
                 </div>
                 <h1>It's easy to understand what foods trigger your bowel symptoms.</h1>
